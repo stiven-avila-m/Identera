@@ -1,0 +1,115 @@
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  margin: 0 0 0.5rem;
+}
+
+.page-desc {
+  color: var(--muted);
+  margin: 0 0 2rem;
+  font-size: 1rem;
+}
+
+.crear-qr-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .crear-qr-grid {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--primary);
+}
+
+.crear-qr-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.crear-qr-form input {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.codigo-validador-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.codigo-input {
+  flex: 1;
+  font-family: ui-monospace, monospace;
+  letter-spacing: 0.05em;
+}
+
+.btn-small {
+  padding: 0.5em 0.9em;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.hint {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.preview-hint {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.preview-hint.top {
+  margin-bottom: 1rem;
+}
+
+.carnet-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.preview-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.preview-actions button {
+  width: 100%;
+  justify-content: center;
+}

@@ -1,0 +1,317 @@
+.escaneo-masa {
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.escaneo-masa-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.5rem;
+}
+
+@media (max-width: 1000px) {
+  .escaneo-masa-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.premium-header {
+  margin-bottom: 2rem;
+}
+
+.badge {
+  background: var(--accent);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  letter-spacing: 0.05em;
+}
+
+.validar-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--surface);
+  padding: 0.4rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  width: fit-content;
+}
+
+.validar-tabs button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+}
+
+.validar-tabs button.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.main-scanner-area {
+  min-height: 400px;
+}
+
+.camara-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 65vh;
+  min-height: 400px;
+  max-height: 600px;
+  background: #000;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+#masa-reader {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+#masa-reader * {
+  max-width: 100% !important;
+}
+
+#masa-reader video {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.camara-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(11, 17, 32, 0.9);
+  color: #ffffff;
+  z-index: 5;
+}
+
+.camara-placeholder .icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  color: #ffffff;
+}
+
+.scanner-overlay-masa {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.target-box {
+  width: 75vw;
+  height: 75vw;
+  max-width: 280px;
+  max-height: 280px;
+  border: 2px solid rgba(91, 108, 249, 0.8);
+  position: relative;
+  box-shadow: 
+    0 0 0 2000px rgba(0, 0, 0, 0.65),
+    0 0 20px rgba(91, 108, 249, 0.3),
+    inset 0 0 20px rgba(91, 108, 249, 0.3);
+  border-radius: 24px;
+  flex-shrink: 0;
+}
+
+.target-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--accent);
+  animation: scanLine 2s infinite linear;
+}
+
+@keyframes scanLine {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.scan-tooltip {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.masa-stop {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  background: var(--error, #ef4444);
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 30px;
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.masa-stop:hover {
+  background: #dc2626;
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* Lote Wrap */
+.lote-wrap {
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.lote-header .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.upload-dropzone {
+  border: 2px dashed var(--border);
+  padding: 3rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: block;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.upload-dropzone input {
+  display: none;
+}
+
+.progress-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s infinite linear;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Stats */
+.masa-stats {
+  margin-top: 2rem;
+}
+
+.counter-box {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.counter-box .value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  display: block;
+}
+
+/* Session Logs */
+.session-logs {
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+}
+
+.logs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.log-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.log-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.log-item.success .log-status-dot { background: var(--success); box-shadow: 0 0 8px var(--success); }
+.log-item.error .log-status-dot { background: var(--error); }
+
+.log-name {
+  font-weight: 600;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.log-time {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.empty-logs {
+  padding: 3rem 0;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
