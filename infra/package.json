@@ -1,0 +1,25 @@
+{
+  "name": "identera-infra",
+  "version": "1.0.0",
+  "description": "CDK infrastructure for Identera — Lambda + API Gateway + DynamoDB",
+  "main": "bin/identera.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy --require-approval never",
+    "destroy": "cdk destroy",
+    "diff": "cdk diff",
+    "synth": "cdk synth"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.9",
+    "aws-cdk": "2.173.2",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.173.2",
+    "constructs": "^10.0.0"
+  }
+}

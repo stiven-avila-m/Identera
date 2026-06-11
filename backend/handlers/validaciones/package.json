@@ -1,0 +1,10 @@
+{
+  "name": "identera-lambda-validaciones",
+  "version": "1.0.0",
+  "description": "Lambda: CRUD de validaciones y carnets escaneados",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "3.600.0",
+    "@aws-sdk/lib-dynamodb": "3.600.0"
+  }
+}
