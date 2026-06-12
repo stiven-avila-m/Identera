@@ -1,23 +1,29 @@
 /**
- * Servicio de Carnets 100% INTEGRADO con FastAPI (Backend)
- * La información de tus carnets vive oficialmente en AWS/Python.
+ * Servicio de Carnets integrado con AWS API Gateway (Lambda).
+ * La información de los carnets vive en DynamoDB a través de las Lambdas.
  */
 
 import { authService } from './authService';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:3000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:3000';
+const API_KEY = import.meta.env.VITE_API_KEY || null;
+
+function headers(custom = {}) {
+  const h = { 'Content-Type': 'application/json', ...custom };
+  if (API_KEY) h['x-api-key'] = API_KEY;
+  return h;
+}
 
 export const apiService = {
-  
+
   async getValidaciones(userId = null) {
     let url = `${API_URL}/validaciones`;
     if (userId) {
       url += `?userId=${encodeURIComponent(userId)}`;
     }
 
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Fallo al conectarse al Backend (Python)");
-
+    const res = await fetch(url, { headers: headers() });
+    if (!res.ok) throw new Error("Fallo al conectarse al Backend");
     return res.json();
   },
 
@@ -29,30 +35,30 @@ export const apiService = {
       data
     };
 
-    const res = await fetch(`${API_URL}/validaciones?role=${role}`, {
+    const res = await fetch(`${API_URL}/validaciones?role=${role || 'USUARIO'}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: headers(),
       body: JSON.stringify(payload)
     });
 
-    if (!res.ok) throw new Error('Error al guardar el carnet en Python');
-
+    if (!res.ok) throw new Error('Error al guardar el carnet');
     return res.json();
   },
 
   async deleteValidacion(id) {
     const res = await fetch(`${API_URL}/validaciones/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: headers()
     });
 
     if (!res.ok) throw new Error('Fallo al borrar validación');
-
     return res.json();
   },
 
   async clearValidaciones() {
     const res = await fetch(`${API_URL}/validaciones/all/clear`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: headers()
     });
 
     if (!res.ok) throw new Error('Error limpiando validaciones');
@@ -67,14 +73,12 @@ export const apiService = {
 
     const res = await fetch(`${API_URL}/qr/regenerar`, {
       method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json'
-      },
+      headers: headers(),
       body: JSON.stringify({ userId: user.id })
     });
 
     if (!res.ok) {
-      const err = await res.json();
+      const err = await res.json().catch(() => ({}));
       throw new Error(err.detail || 'Error regenerando QR');
     }
 
@@ -88,14 +92,12 @@ export const apiService = {
 
     const res = await fetch(`${API_URL}/carnets/${carnetId}`, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: headers(),
       body: JSON.stringify(data)
     });
 
     if (!res.ok) {
-      const err = await res.json();
+      const err = await res.json().catch(() => ({}));
       throw new Error(err.detail || 'Error editando carnet');
     }
 
@@ -118,14 +120,12 @@ export const apiService = {
 
     const res = await fetch(`${API_URL}/carnets`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: headers(),
       body: JSON.stringify(payload)
     });
 
     if (!res.ok) {
-      const err = await res.json();
+      const err = await res.json().catch(() => ({}));
       throw new Error(err.detail || 'Error creando carnet');
     }
 
