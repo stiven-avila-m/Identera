@@ -465,7 +465,6 @@ Desarrollado y mantenido por **Itera Process** — [iteraprocess.com](https://it
 
 | Rol | Contacto |
 |---|---|
-| Arquitecto / Backend | Juan Castillo |
 | Arquitecto / Backend / QA | Juan Pablo Molina |
 | Arquitecta / Frontend | Andryd Ibarra |
 | PM | Xiomara Valencia |
