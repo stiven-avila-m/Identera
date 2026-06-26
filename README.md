@@ -5,7 +5,7 @@ Plataforma web full-stack para la generación, gestión y validación de carnets
 
 ## Resumen
 
-Identera permite a una organización emitir carnets digitales únicos por persona. Cada carnet incluye nombre, cargo, datos de seguridad social (ARL, EPS), cédula, foto y un código QR de validación generado automáticamente. El sistema opera con tres roles: **ADMINISTRADOR**, **USUARIO** y **SEGURIDAD**, cada uno con accesos diferenciados. Toda la información vive en AWS DynamoDB y los carnets pueden descargarse como imagen PNG para uso físico o digital.
+Identera permite a una organización emitir carnets digitales únicos por persona. Cada carnet incluye nombre, cargo, datos de seguridad social (ARL, EPS), cédula, foto y un código QR de validación generado automáticamente. El sistema opera con tres roles: **ADMINISTRADOR**, **USUARIO** y **SEGURIDAD**, cada uno con accesos diferenciados. Toda la información vive en AWS DynamoDB y los carnets pueden descargarse como imagen PNG para uso físico o digital -.
 
 **Flujo general:**
 
