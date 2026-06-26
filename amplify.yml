@@ -6,9 +6,7 @@ version: 1
 #   --tags \
 #     proyecto=Identera \
 #     "cliente=Itera / Preventa" \
-#     "arquitecto=Juan Castillo" \
-#     "arquitecto2=Juan Pablo Molina" \
-#     "arquitecto3=Andryd Ibarra" \
+#     "arquitectos=Juan Pablo Molina, Andryd Ibarra" \
 #     "PM=Xiomara Valencia" \
 #     "Aprobador=Sebastian Sanchez"
 
